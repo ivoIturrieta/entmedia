@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
-const styles = theme => ({
+const styles = () => ({
   toolbarSecondary: {
     justifyContent: "space-between"
   }
@@ -20,22 +21,28 @@ const sections = [
   "Noticias"
 ];
 
-const Toolbar = props => {
+const EnterpreurBottomToolbar = props => {
   const { classes } = props;
 
   return (
     <Toolbar variant="dense" className={classes.toolbarSecondary}>
       {sections.map(section => (
         <Typography color="inherit" noWrap key={section}>
-          {section}
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to={`/${section}`}
+            activeClassName="current"
+          >
+            {section}
+          </Link>
         </Typography>
       ))}
     </Toolbar>
   );
 };
 
-Toolbar.propTypes = {
+EnterpreurBottomToolbar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Toolbar);
+export default withStyles(styles)(EnterpreurBottomToolbar);
