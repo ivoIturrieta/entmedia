@@ -7,7 +7,7 @@ import Coworks from "./components/Coworks";
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/home" component={Home} />
       <Route path="/coworks" component={Coworks} />
     </Switch>
   </main>

@@ -30,7 +30,7 @@ const EnterpreurBottomToolbar = props => {
         <Typography color="inherit" noWrap key={section}>
           <Link
             style={{ textDecoration: "none", color: "black" }}
-            to={`/${section}`}
+            to={`/${section.toLowerCase()}`}
             activeClassName="current"
           >
             {section}

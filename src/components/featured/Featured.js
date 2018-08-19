@@ -25,12 +25,23 @@ const Featured = props => {
       <Grid container>
         <Grid item md={6}>
           <div className={props.classes.mainFeaturedPostContent}>
-            <Typography variant="display2" color="inherit" gutterBottom>
-              Ruth es la nueva emperadora de Edge el Golf.
+            <Typography
+              gutterBottom
+              variant="display2"
+              color="inherit"
+              gutterBottom
+            >
+              Semilla Corfo abre nueva Convocatoria.
             </Typography>
-            <Typography variant="headline" color="inherit" paragraph>
-              Despues de un golpe de estado, Ruth logro convirtirse en CEO de
-              Edge.
+            <Typography
+              gutterBottom
+              variant="headline"
+              color="inherit"
+              paragraph
+            >
+              Programa entrega $25 millones a emprendedores para poner en marcha
+              proyectos de negocio innovadores. Las postulaciones cierran el
+              jueves 13 de septiembre a las 16:00 hrs.
             </Typography>
             <Typography variant="title" color="inherit">
               Continue reading...

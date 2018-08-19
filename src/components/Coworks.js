@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Link } from "react-router-dom";
+import GeneralTableCell from "./table/Table";
 
-const Coworks = props => {
-  return (
-    <div className="title">
-      <h1>React Router demo</h1>
-      <Link to="/">
-        <button>Show the List</button>
-      </Link>
-    </div>
-  );
+const Coworks = () => {
+  return <GeneralTableCell />;
 };
 
 Coworks.propTypes = {
