@@ -8,15 +8,20 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import CardPrice from "./CardPrice";
-import Maps from "../Maps";
+import InvestorReq from "./InvestorReq";
+import ContentChangeTabs from "../../main/Tabs";
 
 const styles = theme => ({
   card: {
     maxWidth: "100%"
+  },
+  cardInside: {
+    maxWidth: "50%"
+  },
+  contentWrapper: {
+    display: "flex"
   },
   media: {
     height: 0,
@@ -39,11 +44,11 @@ const styles = theme => ({
     transform: "rotate(180deg)"
   },
   avatar: {
-    backgroundColor: red[500]
+    weight: 500
   }
 });
 
-class CardExpandable extends Component {
+class InvestorInfo extends Component {
   state = { expanded: false };
 
   handleExpandClick = () => {
@@ -56,45 +61,21 @@ class CardExpandable extends Component {
     return (
       <Card className={classes.card}>
         <CardHeader
-          title={location.cowork.name}
-          subheader={location.cowork.location}
+          title={location.investor.name}
+          subheader={location.investor.entity}
         />
         <CardMedia
           className={classes.media}
-          image={location.cowork.panoramic}
-          title={location.cowork.panoramic}
+          image={location.investor.panoramica}
         />
-        <CardContent>
-          <Typography component="p">{location.cowork.text.subphoto}</Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
-
-        <CardContent>
-          <Typography paragraph variant="body2">
-            {location.cowork.text.title}
-          </Typography>
-          <Typography paragraph>{location.cowork.text.paragraph}</Typography>
-          <Maps
-            isMarkerShown
-            lat={location.cowork.map.lat}
-            lng={location.cowork.map.lng}
-          />
-          <CardPrice prices={location.cowork.prices} />
-        </CardContent>
+        <ContentChangeTabs investor={location.investor} />
       </Card>
     );
   }
 }
 
-CardExpandable.propTypes = {
+InvestorInfo.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CardExpandable);
+export default withStyles(styles)(InvestorInfo);

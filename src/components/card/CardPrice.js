@@ -10,13 +10,9 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  cardHeader: {
-    backgroundColor: theme.palette.grey[100]
-  },
   cardPricing: {
-    display: "flex",
-    alignItems: "baseline",
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2
   },
   cardActions: {
     [theme.breakpoints.up("sm")]: {
@@ -32,31 +28,22 @@ const Pricing = props => {
     <Grid container spacing={40} alignItems="flex-end">
       {props.prices.map(tier => (
         <Grid item key={tier.title} xs={2} sm={6} md={4}>
-          <Card>
-            <CardHeader
-              title={tier.title}
-              subheader={tier.subheader}
-              className={classes.cardHeader}
-            />
+          <Card className={classes.cardPricing}>
             <CardContent>
-              <div className={classes.cardPricing}>
-                <Typography variant="display2" color="textPrimary">
-                  ${tier.price}
-                </Typography>
-                <Typography variant="title" color="textSecondary">
-                  /mo
-                </Typography>
-              </div>
-              {tier.description.map(line => (
-                <Typography variant="subheading" key={line}>
-                  {line}
-                </Typography>
-              ))}
+              <Typography className={classes.title} color="textSecondary">
+                {tier.title}
+              </Typography>
+              <Typography variant="headline" component="h2">
+                $ {tier.price}
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary" />
+              <Typography paragraph component="p">
+                {tier.description}
+                <br />
+              </Typography>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Button fullWidth variant={tier.buttonVariant} color="primary">
-                {tier.buttonText}
-              </Button>
+            <CardActions>
+              <Button size="small">Learn More</Button>
             </CardActions>
           </Card>
         </Grid>

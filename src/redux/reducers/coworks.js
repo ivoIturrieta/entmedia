@@ -1,13 +1,8 @@
-
-​
-const coworksReducer = (state = 'reactjs', action) => {
+export default function coworksReducer(state = "reactjs", action) {
   switch (action.type) {
     case "SELECT_SUBREDDIT":
-      return action.subreddit
+      return action.subreddit;
     default:
-      return state
+      return state;
   }
 }
-
-​
-export default coworksReducer

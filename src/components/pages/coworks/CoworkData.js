@@ -1,8 +1,8 @@
-import wework from "../../img/wework.jpg";
-import wework2 from "../../img/weworkprofile.jpg";
-import edge from "../../img/edge2.png";
-import santander from "../../img/workcafe1.jpg";
-import latam from "../../img/ltama2.png";
+import wework from "../../../img/wework.jpg";
+import wework2 from "../../../img/weworkprofile.jpg";
+import edge from "../../../img/edge2.png";
+import santander from "../../../img/workcafe1.jpg";
+import latam from "../../../img/ltama2.png";
 
 let id = 0;
 function createData(
@@ -26,38 +26,29 @@ export const rows = [
     [
       {
         title: "Hot Desk",
-        subheader: "Con un precio inicial de CLP165,000 por mes",
-        price: "0",
+        subheader: "Por mes por persona",
+        price: "CLP 165,000/mes",
         description: [
-          "10 users included",
-          "2 GB of storage",
-          "Help center access",
-          "Email support"
+          "Guaranteed workspace in a common area at one location. Just bring your laptop, pick an open seat, and get to work."
         ],
         buttonText: "Sign up for free",
         buttonVariant: "outlined"
       },
       {
-        title: "Pro",
+        title: "Dedicated Desk",
         subheader: "Most popular",
-        price: "15",
+        price: "CLP 188,000/mes",
         description: [
-          "20 users included",
-          "10 GB of storage",
-          "Help center access",
-          "Priority email support"
+          "A desk of your own in a shared space at one location. You’ll set up shop in the same spot each day in your building."
         ],
         buttonText: "Get started",
         buttonVariant: "contained"
       },
       {
-        title: "Enterprise",
-        price: "30",
+        title: "Private Office",
+        price: "CLP 235,000/mes",
         description: [
-          "50 users included",
-          "30 GB of storage",
-          "Help center access",
-          "Phone & email support"
+          "Enclosed, lockable offices can accommodate teams of any size. Move-in ready, with desks, chairs, and filing cabinets."
         ],
         buttonText: "Contact us",
         buttonVariant: "outlined"
@@ -103,7 +94,7 @@ export const rows = [
     latam,
     "Latam - El Golf",
     "",
-    "Av. Apoquindo 3300, Zócalo Oriente, Las Condes, Santiago",
+    "Av. Apoquindo 3300, Las Condes",
     3.7,
     {
       lat: -33.416567,

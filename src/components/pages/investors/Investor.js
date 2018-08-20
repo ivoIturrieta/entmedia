@@ -39,22 +39,22 @@ const styles = theme => ({
   }
 });
 
-const HorizontalCard = props => {
-  const { classes, theme } = props;
+const Investor = props => {
+  const { classes } = props;
 
   return (
     <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cover}
-          image={props.row.image}
+          image={props.row.logo}
           title="Live from space album cover"
         />
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Typography variant="headline">{props.row.name}</Typography>
             <Typography variant="subheading" color="textSecondary">
-              {props.row.location}
+              {props.row.entity}
             </Typography>
           </CardContent>
           <div className={classes.controls}>
@@ -64,7 +64,10 @@ const HorizontalCard = props => {
             <IconButton aria-label="Play/pause">
               <Link
                 style={{ textDecoration: "none" }}
-                to={{ pathname: `cowork/${props.row.id}`, cowork: props.row }}
+                to={{
+                  pathname: `inversionista/${props.row.id}`,
+                  investor: props.row
+                }}
               >
                 <PlayArrowIcon className={classes.playIcon} />
               </Link>
@@ -76,9 +79,9 @@ const HorizontalCard = props => {
   );
 };
 
-HorizontalCard.propTypes = {
+Investor.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(HorizontalCard);
+export default withStyles(styles, { withTheme: true })(Investor);
