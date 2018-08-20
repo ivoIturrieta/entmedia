@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   layout: {
@@ -70,10 +71,10 @@ const styles = theme => ({
 
 const featuredPosts = [
   {
-    title: "Featured post",
-    date: "Nov 12",
+    title: "What the hell is the deal with Tether?",
+    date: "Aug 19",
     description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content."
+      "It was a simple concept: a cryptocurrency whose units were always and constantly worth exactly one dollar, because they were backed by dollars held in a bank."
   },
   {
     title: "Post title",
@@ -101,7 +102,12 @@ const SubFeatured = props => {
                   {post.description}
                 </Typography>
                 <Typography variant="subheading" color="primary">
-                  Continue reading...
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to={"articles/articleTwo"}
+                  >
+                    Continue reading...
+                  </Link>
                 </Typography>
               </CardContent>
             </div>

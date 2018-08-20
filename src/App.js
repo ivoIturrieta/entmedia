@@ -4,9 +4,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles } from "@material-ui/core/styles";
 import Router from "./Router";
 
-import Featured from "./components/featured/Featured";
-import SubFeatured from "./components/featured/SubFeatured";
-import MainContent from "./components/main/Main";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 

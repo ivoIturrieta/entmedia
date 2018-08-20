@@ -31,7 +31,6 @@ const EnterpreurBottomToolbar = props => {
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to={`/${section.toLowerCase()}`}
-            activeClassName="current"
           >
             {section}
           </Link>

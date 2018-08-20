@@ -18,12 +18,7 @@ const Footer = props => {
       <Typography variant="title" align="center" gutterBottom>
         Footer
       </Typography>
-      <Typography
-        variant="subheading"
-        align="center"
-        color="textSecondary"
-        component="p"
-      >
+      <Typography variant="subheading" align="center" component="p">
         Something here to give the footer a purpose!
       </Typography>
     </footer>

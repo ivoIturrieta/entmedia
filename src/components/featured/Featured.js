@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   mainFeaturedPost: {
@@ -44,7 +45,12 @@ const Featured = props => {
               jueves 13 de septiembre a las 16:00 hrs.
             </Typography>
             <Typography variant="title" color="inherit">
-              Continue reading...
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={"articles/articleOne"}
+              >
+                Continue reading...
+              </Link>
             </Typography>
           </div>
         </Grid>
