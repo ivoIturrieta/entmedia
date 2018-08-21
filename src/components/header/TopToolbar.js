@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import ButtonGeneric from "./Button";
+import { Link } from "react-router-dom";
+import SignOut from "../pages/auth/SignOut";
+
 const styles = theme => ({
   toolbarMain: {
     borderBottom: `1px solid ${theme.palette.grey[300]}`
@@ -17,7 +20,6 @@ const styles = theme => ({
 
 const EnterpreurTopToolbar = props => {
   const { classes } = props;
-
   return (
     <Toolbar className={classes.toolbarMain}>
       <ButtonGeneric size="small" name={"Subscribe"} variant="outlined" />
@@ -33,7 +35,12 @@ const EnterpreurTopToolbar = props => {
       <IconButton>
         <SearchIcon />
       </IconButton>
-      <ButtonGeneric size="small" name={"Sign Up"} variant="outlined" />
+      <Link style={{ textDecoration: "none" }} to={"/signup"}>
+        <ButtonGeneric size="small" name={"Sign Up"} variant="outlined" />
+      </Link>
+      <Link style={{ textDecoration: "none" }} to={"/inversionistas/new"}>
+        <ButtonGeneric size="small" name={"Form"} variant="outlined" />
+      </Link>
     </Toolbar>
   );
 };

@@ -51,7 +51,15 @@ class ContentChangeTabs extends React.Component {
         </AppBar>
         {value === 0 && (
           <TabContainer>
-            <InvestorTab investor={investor} tabValue={investor[0]} />
+            <InvestorTab
+              investor={investor}
+              headers={[
+                "Capital sin comisión",
+                "Aceleración y experiencia por 6 meses",
+                "Beneficios"
+              ]}
+              tabValue={investor[0]}
+            />
           </TabContainer>
         )}
         {value === 1 && <TabContainer>1</TabContainer>}

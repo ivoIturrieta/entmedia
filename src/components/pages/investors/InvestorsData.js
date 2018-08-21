@@ -102,31 +102,19 @@ export const rows = [
     "Gobierno de Chile",
     [
       {
-        title: "Persona natural",
+        title: "¿Qué estamos buscando?",
         requisitos: [
-          "Mas de 18 años.",
-          "Cuente con residencia en Chile.",
-          "Que no haya iniciado actividades en SII o que tribute en segunda categoría sin importar la fecha de iniciación de actividades. Si tributa en primera categoría debe haber iniciado actividades en los giros de primera categoría en los últimos 24 meses.",
-          "Tener ventas netas que no excedan los $100 millones en los últimos 6 meses."
-        ]
-      },
-      {
-        title: "Persona juridica",
-        requisitos: [
-          "Tenga fines de lucro.",
-          "Esté constituida en Chile.",
-          "Haya iniciado actividades en los últimos 24 meses.",
-          "Tenga ventas netas que no excedan los $100 millones en los últimos 6 meses."
+          "Nuestro programa de Seed busca atraer emprendedores con un enfoque global a hacer negocios en Chile. Seed acelera estados tempranos de emprendimientos que reforzarán el ambiente empresarial, ayudarán a formar la cultura de innovación en Chile y se conectarán con Latinoamérica para crecer desde nuestra región hacia el mundo."
         ]
       }
     ],
     [
       {
-        title: "Monto Subsidio $ 25.000.000 pesos.",
+        title: "¿Qué ofrecemos?",
         requisitos: [
-          "Este cofinanciamiento cubre hasta el 75% del costo del proyecto. El monto restante debe ser aportado por el beneficiario, en dinero en efectivo, a lo largo de la ejecución del proyecto.",
-          "Cada proyecto deberá presupuestar y recibir servicios de mentoría, realizados por integrantes de alguna de las Redes de Mentores de Corfo, destinando $500.000 del subsidio para este fin.",
-          "Revisa aquellas actividades financiables y aquellas que NO lo son en las Bases Técnicas de Capital Semilla. Todos los documentos que necesitas revisar, están en la pestaña Bases y descargables"
+          "La startup recibirá 25 millones de pesos, equivalentes al 90% del subsidio, en forma de reembolso o en cuotas. El 10% restante debe ser proveniente del startup/fundador. Además, las startups que pasen al Demo Day tendrán la opción de postular a otros 25 millones de pesos una vez que finalice el programa inicial.",
+          "Durante los 6 meses de experiencia en Chile, Start-Up Chile acelerará y colaborará con la startup. Además entregará la oportunidad de compartir en un ambiente creativo y diverso con personas de más de 30 nacionalidades, lo que genera una experiencia inolvidable.",
+          "Los equipos de trabajo extranjeros tendrán una visa de trabajo por 1 año. Todos los equipos podrán acceder a la comunidad de Start-Up Chile que incluye privilegios de hasta $300.000 USD en por ejemplo, Microsoft BizSpark, Facebook Start, Amazon Web Services y muchos más. Todos los startups pueden usar el espacio de trabajo compartido por hasta 9 meses desde su llegada al programa, libre de costos."
         ]
       }
     ],

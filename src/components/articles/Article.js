@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import { articles } from "./ArticleData";
+import { getInvestorData } from "../../redux/selectors/editor";
+import { database } from "../../firebase";
+import { connect } from "react-redux";
+
+import EditorRead from "../editor/EditorRead";
 
 const styles = theme => ({
   root: {
@@ -17,55 +20,49 @@ const styles = theme => ({
   }
 });
 
-const Article = props => {
-  const { classes } = props;
+class Article extends Component {
+  componentDidMount() {
+    this.ref = database.ref("/").on("value", snapshot => {
+      this.props.onSaveEditorState({ data: snapshot.val().inversionistas });
+    });
+  }
 
-  return (
-    <div>
-      <Paper elevation={14} className={classes.root} elevation={1}>
-        <div className={props.classes.mainPostContent}>
-          <Typography gutterBottom variant="headline" component="h3">
-            {articles.article1.heading1}
-          </Typography>
-          <Typography paragraph component="p">
-            {articles.article1.paragraph1}
-          </Typography>
-          <Typography paragraph component="p">
-            {articles.article1.paragraph2}
-          </Typography>
-          <Typography paragraph component="p">
-            {articles.article1.paragraph3}
-          </Typography>
-          <Typography gutterBottom variant="headline" component="h3">
-            {articles.article1.heading2}
-          </Typography>
-          <Typography paragraph component="p">
-            {articles.article1.paragraph4}
-          </Typography>
-          <Typography variant="body1">{articles.article1.body1}</Typography>
-          <Typography variant="body1">{articles.article1.body2}</Typography>
-          <Typography variant="body1">{articles.article1.body3}</Typography>
-          <Typography variant="body1">{articles.article1.body4}</Typography>
-          <Typography paragraph variant="body1">
-            {articles.article1.body5}
-          </Typography>
-          <Typography paragraph variant="body1">
-            {articles.article1.body6}
-          </Typography>
-          <Typography gutterBottom variant="headline" component="h3">
-            {articles.article1.heading3}
-          </Typography>
-          <Typography paragraph variant="body1">
-            {articles.article1.body7}
-          </Typography>
-        </div>
-      </Paper>
-    </div>
-  );
-};
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <Paper elevation={14} className={classes.root} elevation={1}>
+          <EditorRead investor={this.props.investor} />
+        </Paper>
+      </div>
+    );
+  }
+}
 
 Article.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Article);
+const mapStateToProps = state => {
+  const investorData = getInvestorData(state);
+  return {
+    investor: investorData
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  onSaveEditorState: inversionista => {
+    dispatch({
+      type: "UPDATE_EDITOR_STATE",
+      payload: inversionista
+    });
+  }
+});
+
+const ConnectedEditor = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default ConnectedEditor(withStyles(styles)(Article));

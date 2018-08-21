@@ -13,23 +13,23 @@ class InvestorTab extends Component {
   state = { expanded: false };
 
   render() {
-    const { classes, location } = this.props;
+    const { classes, location, headers } = this.props;
 
     return (
       <span>
         <div className={classes.contentWrapper}>
           <InvestorReq
-            name="Beneficiarios"
+            name={headers[0] || "Beneficiarios"}
             requisitos={this.props.investor.beneficiario}
           />
           <InvestorReq
-            name="Financiamiento"
+            name={headers[1] || "Financiamiento"}
             requisitos={this.props.investor.financiamiento}
           />
         </div>
         <div className={classes.contentWrapper}>
           <InvestorReq
-            name="Resultados Esperados"
+            name={headers[2] || "Resultados Esperados"}
             requisitos={this.props.investor.esperado}
           />
         </div>
