@@ -11,7 +11,21 @@ const dropzoneStyle = {
 };
 
 class Attachments extends Component {
-  onDrop = files => files.forEach(file => this.props.files(file.name, file));
+  state = {
+    files: []
+  };
+  onDrop = files => {
+    const fileArray = [];
+    files.forEach(file => {
+      fileArray.push(file);
+    });
+
+    this.setState({
+      files: fileArray
+    });
+
+    this.props.onChange("attachments", fileArray);
+  };
 
   render() {
     const previewStyle = {
@@ -19,6 +33,7 @@ class Attachments extends Component {
       width: "30%",
       height: "30%"
     };
+
     return (
       <Fragment>
         <Dropzone onDrop={this.onDrop}>
@@ -26,7 +41,7 @@ class Attachments extends Component {
             Try dropping some files here, or click to select files to upload.
           </p>
         </Dropzone>
-        {this.props.length > 0 && (
+        {this.props.values.length > 0 && (
           <div style={{ padding: "3%" }}>
             {this.props.values.map(file => (
               <img

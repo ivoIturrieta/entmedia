@@ -57,7 +57,7 @@ const INITIAL_STATE = {
 class SignUpForm extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { email, passwordOne } = this.state;
     const a = auth;
 
     const { history } = this.props;

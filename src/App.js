@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles } from "@material-ui/core/styles";
 import Router from "./Router";
+import { database } from "./firebase";
+import { receivedEntities } from "./redux/actions/entities";
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -21,6 +25,15 @@ const styles = theme => ({
 });
 
 class App extends Component {
+  componentDidMount() {
+    this.ref = database.ref("/").on("value", snapshot => {
+      this.props.receivedEntities(snapshot.val());
+    });
+  }
+
+  componentWillUnmount() {
+    this.ref.off();
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -36,4 +49,13 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    { receivedEntities: entities => receivedEntities(entities) },
+    dispatch
+  );
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(withStyles(styles)(App));

@@ -3,12 +3,20 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import { withFormik } from "formik";
-import { database } from "../../firebase";
-import Attachments from "../attachments/Dropzone";
+import { database, storage } from "../../firebase";
 import RichEditorExample from "../editor/Editor";
+import Attachments from "../attachments/Dropzone";
 import { EditorState, convertToRaw } from "draft-js";
+import Button from "@material-ui/core/Button";
 
-const AddressForm = ({ values, handleChange, handleSubmit, setFieldValue }) => {
+const ArticleFormLayout = ({
+  values,
+  handleChange,
+  handleSubmit,
+  setFieldValue,
+  isSubmitting,
+  status
+}) => {
   return (
     <React.Fragment>
       <Typography variant="title" gutterBottom>
@@ -28,34 +36,67 @@ const AddressForm = ({ values, handleChange, handleSubmit, setFieldValue }) => {
           />
         </Grid>
       </Grid>
-      <div style={{ padding: "3%" }}>
-        <Attachments files={setFieldValue} value={values.attachments} />
-      </div>
+      <Attachments values={values.attachments} onChange={setFieldValue} />
       <RichEditorExample
         editorState={values.editorState}
         onChange={setFieldValue}
       />
-      <button type="submit" onClick={handleSubmit}>
-        hola
-      </button>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disabled={isSubmitting}
+        onClick={handleSubmit}
+      >
+        Next
+      </Button>
+      {status &&
+        status.success && (
+          <Typography variant="title" gutterBottom>
+            Succesful upload
+          </Typography>
+        )}
     </React.Fragment>
   );
 };
 
-const InvestorForm = withFormik({
+const ArticleForm = withFormik({
   mapPropsToValues: props => ({
     name: "",
     date: new Date(),
     editorState: new EditorState.createEmpty(),
     attachments: []
   }),
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
+
+  handleSubmit: (values, { setStatus, resetForm }) => {
+    const storageRef = storage.ref();
     values.editorState = convertToRaw(values.editorState.getCurrentContent());
     database
       .ref()
       .child("articles")
-      .push(values);
+      .push(values)
+      .then(response => {
+        const databaseKey = response.key;
+        const articleStorageRef = storageRef.child(`${databaseKey}/`);
+        values.attachments.forEach(attachment => {
+          articleStorageRef
+            .child(attachment.name)
+            .put(attachment)
+            .then(snapshot => {
+              console.log("Uploaded a blob or file!", attachment.name);
+            });
+        });
+      })
+      .then(() => {
+        resetForm({
+          name: "",
+          date: new Date(),
+          editorState: new EditorState.createEmpty(),
+          attachments: []
+        });
+        setStatus({ success: true });
+      });
   }
-})(AddressForm);
+})(ArticleFormLayout);
 
-export default InvestorForm;
+export default ArticleForm;

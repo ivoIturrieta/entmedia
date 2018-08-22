@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import coworksReducer from "./coworks";
+import entitiesReducer from "./entities";
 import editorReducer from "./editor";
 import articleReducer from "./articles";
 
 export default combineReducers({
-  coworks: coworksReducer,
+  entities: entitiesReducer,
   editor: editorReducer,
   articles: articleReducer
 });

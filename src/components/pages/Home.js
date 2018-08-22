@@ -6,11 +6,11 @@ import MainContent from "../main/Main";
 
 const Home = () => {
   return (
-    <span>
+    <React.Fragment>
       <Featured />
       <SubFeatured />
       <MainContent />
-    </span>
+    </React.Fragment>
   );
 };
 

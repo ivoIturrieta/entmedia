@@ -30,13 +30,14 @@ class Main extends Component {
       <main>
         <Switch>
           <Route exact path="/home" component={Home} />
-          <Route path="/inversionistas/new" component={AddressForm} />
+          <Route exact path="/articles/new" component={AddressForm} />
           <Route path="/inversionistas" component={Investors} />
           <Route path="/inversionista/:id" component={InvestorInfo} />
           <Route path="/coworks" component={Coworks} />
           <Route path="/cowork/:id" component={CardExpandable} />
           <Route path="/noticias" component={NewsList} />
           <Route path="/articles/:id" component={Article} />
+
           <Route path="/signin" component={SignInPage} />
           <Route path="/signup" component={SignUpPage} />
         </Switch>

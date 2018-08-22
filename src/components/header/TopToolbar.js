@@ -38,7 +38,7 @@ const EnterpreurTopToolbar = props => {
       <Link style={{ textDecoration: "none" }} to={"/signup"}>
         <ButtonGeneric size="small" name={"Sign Up"} variant="outlined" />
       </Link>
-      <Link style={{ textDecoration: "none" }} to={"/inversionistas/new"}>
+      <Link style={{ textDecoration: "none" }} to={"/articles/new"}>
         <ButtonGeneric size="small" name={"Form"} variant="outlined" />
       </Link>
     </Toolbar>
