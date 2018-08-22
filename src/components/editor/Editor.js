@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 
-import {
-  Editor,
-  EditorState,
-  RichUtils,
-  convertToRaw,
-  stateToHTML
-} from "draft-js";
-import { database } from "../../firebase";
+import { Editor, RichUtils } from "draft-js";
 import {
   BlockStyleControls,
   InlineStyleControls,
@@ -17,46 +10,34 @@ import {
 import "./Editor.css";
 
 class RichEditorExample extends Component {
-  state = { editorState: EditorState.createEmpty() };
-
-  focus = () => this.refs.editor.focus();
   onChange = editorState => {
-    const contentState = editorState.getCurrentContent();
-    console.log("content state", convertToRaw(contentState));
-    this.setState({ editorState });
+    this.props.onChange("editorState", editorState);
   };
-  handleKeyCommand = command => this._handleKeyCommand(command);
-  onTab = e => this._onTab(e);
-  toggleBlockType = type => this._toggleBlockType(type);
-  toggleInlineStyle = style => this._toggleInlineStyle(style);
-
-  _handleKeyCommand(command) {
-    const { editorState } = this.state;
+  focus = () => this.refs.editor.focus();
+  handleKeyCommand = command => {
+    const { editorState } = this.props;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
       return true;
     }
     return false;
-  }
+  };
 
-  _onTab(e) {
+  onTab = e => {
     const maxDepth = 4;
-    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
-  }
-
-  _toggleBlockType(blockType) {
-    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
-  }
-
-  _toggleInlineStyle(inlineStyle) {
+    this.onChange(RichUtils.onTab(e, this.props.editorState, maxDepth));
+  };
+  toggleBlockType = blockType => {
+    this.onChange(RichUtils.toggleBlockType(this.props.editorState, blockType));
+  };
+  toggleInlineStyle = inlineStyle => {
     this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
+      RichUtils.toggleInlineStyle(this.props.editorState, inlineStyle)
     );
-  }
-
+  };
   render() {
-    const { editorState } = this.state;
+    const { editorState } = this.props;
     let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
@@ -69,16 +50,6 @@ class RichEditorExample extends Component {
         className += " RichEditor-hidePlaceholder";
       }
     }
-
-    const handleSubmit = () => {
-      const body = convertToRaw(contentState);
-      database
-        .ref()
-        .child("inversionistas")
-        .child("inversionista")
-        .push(body);
-    };
-
     return (
       <div className="RichEditor-root">
         <BlockStyleControls
@@ -101,7 +72,6 @@ class RichEditorExample extends Component {
             spellCheck={true}
           />
         </div>
-        <button onClick={handleSubmit}>hola</button>
       </div>
     );
   }

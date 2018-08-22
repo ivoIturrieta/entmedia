@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 
-import {
-  Editor,
-  EditorState,
-  convertToRaw,
-  createWithContent,
-  convertFromRaw
-} from "draft-js";
-import { getBlockStyle, styleMap } from "./EditorUtils";
+import { Editor, EditorState, convertFromRaw } from "draft-js";
 import "./Editor.css";
 
 class EditorRead extends Component {
@@ -16,12 +9,11 @@ class EditorRead extends Component {
   };
 
   setEditorContent = () => {
-    const investor = Object.values(this.props.investor)[0];
-    //eslint-disable-next-line
-    debugger;
+    const article = Object.values(this.props.article)[0].editorState;
+    article.entityMap = {};
     const editorState = EditorState.push(
       this.state.editorState,
-      convertFromRaw(investor)
+      convertFromRaw(article)
     );
     this.setState({ editorState });
   };

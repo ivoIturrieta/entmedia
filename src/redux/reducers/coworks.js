@@ -1,4 +1,4 @@
-export default function coworksReducer(state = "reactjs", action) {
+export default function coworksReducer(state = {}, action) {
   switch (action.type) {
     case "SELECT_SUBREDDIT":
       return action.subreddit;

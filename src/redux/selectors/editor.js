@@ -1,1 +1,1 @@
-export const getInvestorData = state => state.editor.inversionistas;
+export const getInvestorData = state => state.editor.articles;

@@ -11,6 +11,7 @@ import SignUpPage from "./components/pages/auth/SignUpPage";
 import CardExpandable from "./components/card/CardExpandable";
 import { auth } from "./components/pages/auth/firebase";
 import AddressForm from "./components/forms/AddressForm";
+import NewsList from "./components/pages/news/NewsList";
 
 class Main extends Component {
   state = {
@@ -29,14 +30,15 @@ class Main extends Component {
       <main>
         <Switch>
           <Route exact path="/home" component={Home} />
-          <Route path="/articles/:id" component={Article} />
-          <Route path="/signin" component={SignInPage} />
-          <Route path="/signup" component={SignUpPage} />
-          <Route path="/coworks" component={Coworks} />
-          <Route path="/cowork/:id" component={CardExpandable} />
           <Route path="/inversionistas/new" component={AddressForm} />
           <Route path="/inversionistas" component={Investors} />
           <Route path="/inversionista/:id" component={InvestorInfo} />
+          <Route path="/coworks" component={Coworks} />
+          <Route path="/cowork/:id" component={CardExpandable} />
+          <Route path="/noticias" component={NewsList} />
+          <Route path="/articles/:id" component={Article} />
+          <Route path="/signin" component={SignInPage} />
+          <Route path="/signup" component={SignUpPage} />
         </Switch>
       </main>
     );

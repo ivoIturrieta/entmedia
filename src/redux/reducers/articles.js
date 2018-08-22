@@ -1,13 +1,12 @@
 import { EditorState } from "draft-js";
 
-const defaultState = {};
+const defaultState = {
+  articles: EditorState.createEmpty()
+};
 export default function editor(state = defaultState, action) {
   switch (action.type) {
-    case "none": {
-      return {
-        ...state,
-        inversionistas: action.payload.data.inversionista
-      };
+    case "UPDATE_EDITOR_STATE": {
+      return [...state, action.payload.data];
     }
 
     default:
